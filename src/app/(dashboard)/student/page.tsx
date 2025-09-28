@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import { LogoutBtn } from '@/component/logout_btn';
 import { AvailableBooks } from '@/component/availableBooksBtn';
 import { AssignedBooksBtn } from '@/component/assignedBooksBtn';
+import { SeatStatusDisplay } from '@/component/seatStatusDisplay';
 
 export default async function AdminPage() {
     const cookieStore = await cookies();
@@ -27,6 +28,7 @@ export default async function AdminPage() {
                     <AvailableBooks />
                     <AssignedBooksBtn />
                 </div>
+                <SeatStatusDisplay />
             </div>
         </main>
     );

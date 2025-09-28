@@ -59,3 +59,8 @@ model TempTag {
   tag  String @unique
   type String @unique @default("tempTag")
 }
+
+model seatStatus {
+  id Int @id @default(autoincrement())
+  availabelSeat String @default("0")
+}
