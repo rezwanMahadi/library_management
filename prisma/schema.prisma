@@ -21,7 +21,7 @@ model User {
   phone        String?
   password     String?
   role         String?
-  universityId String?
+  universityId String? @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
