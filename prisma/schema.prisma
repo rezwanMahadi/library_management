@@ -21,19 +21,37 @@ model User {
   phone        String?
   password     String?
   role         String?
-  universityId String? @unique
+  universityId String @unique
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @default(now())
+  orderedBooks OrderedBook[]
 }
 
 model Book {
   id        Int      @id @default(autoincrement())
   title     String
   author    String
-  bookId    String
+  bookId    String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+
+  availableBooks AvailableBook[]
+  orderedBooks   OrderedBook[]
+}
+
+model AvailableBook {
+  id     Int @id @default(autoincrement())
+  bookId String @unique
+  book   Book @relation(fields: [bookId], references: [bookId])
+}
+
+model OrderedBook {
+  id     Int @id @default(autoincrement())
+  bookId String @unique
+  universityId String @unique
+  book   Book @relation(fields: [bookId], references: [bookId])
+  user   User @relation(fields: [universityId], references: [universityId])
 }
 
 model TempTag {
